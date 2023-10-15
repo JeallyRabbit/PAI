@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Nagłówek mojej storny</h1>
+    </header>
+    <table id="books_table">
+        <tr>
+            <td>
+                Tytuł
+            </td>
+            <td>
+                Autor
+            </td>
+            <td>
+                Gatunek
+            </td>
+            <td>
+                Ilość
+            </td>
+        </tr>
+        <tr>
+            <td>
+                ksiazka1
+            </td>>
+            <td>
+                Autor1
+            </td>
+            <td>
+                gatunek1
+            </td>
+            <td>
+                10
+            </td>
+        </tr>
+        <tr>
+            <td>
+                ksiazka2
+            </td>>
+            <td>
+                autor2
+            </td>
+            <td>
+                gatunek2
+            </td>
+            <td>
+                11
+            </td>
+        </tr>
+        <tr>
+            <td>
+                ksiazka2
+            </td>>
+            <td>
+                autor3
+            </td>
+            <td>
+                gatunek3
+            </td>
+            <td>
+                12
+            </td>
+        </tr>
+
+    </table>
+    <form id='add_book'>
+        <label for="btitle">Book Title:</label><br>
+        <input type="text" id="book_title" name="btitle" value=""><br>
+        <label for="bauthor">Book Author:</label><br>
+        <input type="text" id="book_author" name="bauthor" value=""><br>
+        <label for="bgenre">Book Genre:</label><br>
+        <input type="text" id="book_genre" name="bgenre" value=""><br>
+        <label for="bgenre">Amount:</label><br>
+        <input type="number" id="book_amount" name="bamount" value=""><br>
+
+        <input type="checkbox" id="to_read" name="btoread" value="to_read">
+        <label for="add_book">To read</label><br><br>
+
+        <button type="button" onclick="addBooks(document.getElementById('book_title').value,
+        document.getElementById('book_author').value,
+        document.getElementById('book_genre').value,
+        document.getElementById('book_amount').value)">Add Book</button>
+      </form> 
+
+    <!-- <button type="button" onclick="addBooks('a','b','c')">Add Book</button> -->
+    <script>
+        function addBooks(title,author,genre,amount) {
+        var table = document.getElementById("books_table");
+        var last_row = document.getElementById("books_table").rows.length;
+        var row = table.insertRow(last_row);
+        var new_title = row.insertCell(0);
+        var new_author= row.insertCell(1);
+        var new_genre= row.insertCell(2);
+        var new_amount=row.insertCell(3);
+        //title="asd";
+        //author="qwe";
+        //genre="poi";
+        new_title.innerHTML = title;
+        new_author.innerHTML = author;
+        new_genre.innerHTML=genre;
+        new_amount.innerHTML=amount;
+        }
+        </script>
+
+    <footer>
+        <p>Author: Aleksander Karczewski<br>
+        aleksander.karczewski@student.put.poznan.pl</p>
+        <p>
+            
+        <a href="html+css.html">Strona główna</a>
+
+        </p>
+      </footer>
+
+</body>
+</html>
