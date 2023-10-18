@@ -1,0 +1,82 @@
+/* Resetowanie domyślnych stylów przeglądarek */
+body, h1, h2, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 28px;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+article {
+    margin: 20px 0;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+p {
+    line-height: 1.5;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+.fat-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fat-footer section {
+    flex: 1;
+}
+
+.fat-footer h4 {
+    margin-bottom: 10px;
+}
+
+/* Dodatkowe style dla recenzji "Szkarłatna Wdowa" */
+main h2 {
+    color: #e60000; /* Czerwony kolor tytułów */
+}
+
+main p {
+    text-align: justify;
+}
