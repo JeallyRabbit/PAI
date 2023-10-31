@@ -1,0 +1,69 @@
+/* Resetowanie domyślnych stylów przeglądarek */
+body, h1, h2, h3, p, ul, li, form, input {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+article {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+.fat-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fat-footer section {
+    flex: 1;
+}
+
+.fat-footer h4 {
+    margin-bottom: 10px;
+}
+
+/* Dodatkowe efekty z CSS */
+/* Możesz znaleźć je na https://1stwebdesigner.com/css-effects/ */
+
+/* Przykład efektu hover na linkach */
+a:hover {
+    color: #ff6600;
+}

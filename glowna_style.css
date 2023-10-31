@@ -1,5 +1,13 @@
 /* Resetowanie domyślnych stylów przeglądarek */
-body, h1, h2, h3, p, ul, li, form, input {
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+li,
+form,
+input {
     margin: 0;
     padding: 0;
     border: 0;
@@ -60,10 +68,71 @@ footer {
     margin-bottom: 10px;
 }
 
+a {
+    color: hotpink;
+}
+ table, tr,th{
+    border: 1px solid;
+ }
+
+
+@-webkit-keyframes hvr-pulse-shrink {
+    to {
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9);
+    }
+}
+
+@keyframes hvr-pulse-shrink {
+    to {
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9);
+    }
+}
+
+.hvr-pulse-shrink {
+    font-size: 16px;
+    background-color: hotpink;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+.hvr-pulse-shrink:hover,
+.hvr-pulse-shrink:focus,
+.hvr-pulse-shrink:active {
+    -webkit-animation-name: hvr-pulse-shrink;
+    animation-name: hvr-pulse-shrink;
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
+}
+
+
 /* Dodatkowe efekty z CSS */
 /* Możesz znaleźć je na https://1stwebdesigner.com/css-effects/ */
 
 /* Przykład efektu hover na linkach */
-a:hover {
-    color: #ff6600;
+.hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+    transform: scale(1.1);
 }

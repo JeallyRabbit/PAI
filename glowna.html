@@ -1,21 +1,64 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"> 
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="glowna_style.css">
     <title>Strona Domowa</title>
+    <script>
+        function wyswietlDane() {
+            var tytul = document.getElementById("tytul").value;
+            var autor = document.getElementById("autor").value;
+            var opis = document.getElementById("opis").value;
+            var recenzent = document.getElementById("recenzent").value;
+            var email = document.getElementById("email").value;
+            var dataWydania = document.getElementById("data-wydania").value;
+            var liczbaStron = document.getElementById("liczba-stron").value;
+
+            var tabela = document.getElementById("tabela-danych");
+
+            var wiersz = tabela.insertRow();
+            var komorka1 = wiersz.insertCell(0);
+            var komorka2 = wiersz.insertCell(1);
+            var komorka3 = wiersz.insertCell(2);
+            var komorka4 = wiersz.insertCell(3);
+            var komorka5 = wiersz.insertCell(4);
+            var komorka6 = wiersz.insertCell(5);
+            var komorka7 = wiersz.insertCell(6);
+
+            komorka1.innerHTML = tytul;
+            komorka2.innerHTML = autor;
+            komorka3.innerHTML = opis;
+            komorka4.innerHTML = recenzent;
+            komorka5.innerHTML = email;
+            komorka6.innerHTML = dataWydania;
+            komorka7.innerHTML = liczbaStron;
+
+            document.getElementById("tytul").value = "";
+            document.getElementById("autor").value = "";
+            document.getElementById("opis").value = "";
+            document.getElementById("recenzent").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("data-wydania").value = "";
+            document.getElementById("liczba-stron").value = "";
+        }
+    </script>
+
 </head>
-<body>
+
+<body >
     <header>
         <h1>Moja Strona o książkach</h1>
         <h2>Witaj na mojej stronie internetowej</h2>
         <nav>
             <ul>
-                <li><a href="glowna.html">Strona Główna</a></li>
-                <li><a href="recenzja_hobbita.html">Hobbit</a></li>
-                <li><a href="szkarlatna_wdowa.css">Szkarłatna Wdowa</a></li>
-                <li><a href="subpage3.html">Podstrona 3</a></li>
+                <li><a href="glowna.html" class="hvr-grow">Strona Główna</a></li>
+                <li><a href="recenzja_hobbita.html" class="hvr-grow">Hobbit</a></li>
+                <li><a href="szkarlatna_wdowa.css" class="hvr-grow">Szkarłatna Wdowa</a></li>
+                <li><a href="wladca_pierscieni.html" class="hvr-grow">Władca Pierścieni</a></li>
             </ul>
         </nav>
     </header>
@@ -23,18 +66,75 @@
     <main>
         <section id="home">
             <h3>Aktualności</h3>
-            <article>
+            <article class="animate__animated animate__zoomIn">
                 <h4>J.R.R.Tolkien - "Hobbit"</h4>
-                <p>Witajcie w magicznym świecie "Hobbita"! Ta klasyczna powieść fantasy autorstwa J.R.R. Tolkiena zabierze cię w niezwykłą podróż przez Śródziemie, gdzie spotkasz hobbita Bilbo Bagginsa, smoki, krasnoludy i wiele innych fascynujących postaci. Przygotuj się na przygodę, która na zawsze pozostanie w twoim sercu.</p>
-                <p>Chcesz dowiedzieć się więcej o tej niesamowitej książce? Przeczytaj pełną <a href="recenzja_hobbita.html">recenzję książki "Hobbit"</a>.</p>
+                <p>Witajcie w magicznym świecie "Hobbita"! Ta klasyczna powieść fantasy autorstwa J.R.R. Tolkiena
+                    zabierze cię w niezwykłą podróż przez Śródziemie, gdzie spotkasz hobbita Bilbo Bagginsa, smoki,
+                    krasnoludy i wiele innych fascynujących postaci. Przygotuj się na przygodę, która na zawsze
+                    pozostanie w twoim sercu.</p>
+                <p>Chcesz dowiedzieć się więcej o tej niesamowitej książce? Przeczytaj pełną 
+                    <a href="recenzja_hobbita.html" class="hvr-grow">recenzję książki "Hobbit"</a>.</p>
             </article>
-            
-            <article>
+
+            <article class="animate__animated animate__zoomIn" >
                 <h4>G.Masterton - "Szkarłatna Wdowa"</h4>
-                <p><strong>Wstęp:</strong> Przenikliwa, mrożąca krew w żyłach opowieść o tajemniczej "Szkarłatnej Wdowie" autorstwa Grahama Mastertona to lektura, która pozostawi cię z dreszczem na plecach. Przygotuj się na ekscytujący thriller, który zabierze cię w mroczne zakamarki ludzkiego umysłu i natury.</p>
-                <p>Chcesz dowiedzieć się więcej o tej niesamowitej książce? Przeczytaj pełną <a href="szkarlatna_wdowa.html">recenzję książki "Szkarłatna Wdowa"</a>.</p>
+                <p>Przenikliwa, mrożąca krew w żyłach opowieść o tajemniczej "Szkarłatnej Wdowie" autorstwa Grahama
+                    Mastertona to lektura, która pozostawi cię z dreszczem na plecach. Przygotuj się na ekscytujący
+                    thriller, który zabierze cię w mroczne zakamarki ludzkiego umysłu i natury.</p>
+                <p>Chcesz dowiedzieć się więcej o tej niesamowitej książce? Przeczytaj pełną <a
+                        href="szkarlatna_wdowa.html">recenzję książki "Szkarłatna Wdowa"</a>.</p>
             </article>
-            
+
+            <article class="animate__animated animate__zoomIn">
+                <h4>J.R.R.Tolkien - "Władca Pierścieni"</h4>
+                <p>"Władca Pierścieni" to epicka saga fantasy autorstwa J.R.R. Tolkiena, składająca się z trzech tomów:
+                    "Drużyna Pierścienia", "Dwie Wieże" i "Powrót Króla".
+                    Opowieść rozgrywa się w magicznym świecie Śródziemia i opisuje niezwykłą podróż hobbita Froda
+                    Bagginsa oraz jego przyjaciół,
+                    którzy zostają wciągnięci w misję ocalenia światu przed ciemnym władcą Sauronem.Przeczytaj pełną
+                    <a href="wladca_pierscieni.html" class="hvr-grow">recenzję książki "Władca Pierścieni"</a>.
+                </p>
+            </article>
+
+            <h2>Propozycje Książek do Zrecenzowania</h2>
+            <form>
+                <label for="tytul">Tytuł książki:</label>
+                <input type="text" id="tytul" required><br><br>
+        
+                <label for="autor">Autor książki:</label>
+                <input type="text" id="autor" required><br><br>
+        
+                <label for="opis">Krótki opis książki:</label><br>
+                <textarea id="opis" rows="4" cols="50" required></textarea><br><br>
+        
+                <label for="recenzent">Twój nick/imię (opcjonalne):</label>
+                <input type="text" id="recenzent"><br><br>
+        
+                <label for="email">Adres e-mail:</label>
+                <input type="email" id="email" required><br><br>
+        
+                <label for="data-wydania">Data wydania:</label>
+                <input type="date" id="data-wydania" required><br><br>
+        
+                <label for="liczba-stron">Liczba stron:</label>
+                <input type="number" id="liczba-stron" required><br><br>
+        
+                <input type="button" class="hvr-pulse-shrink" value="Wyślij propozycję" onclick="wyswietlDane()">
+            </form>
+        
+            <h2>Wprowadzone dane:</h2>
+            <table id="tabela-danych">
+                <tr>
+                    <th>Tytuł książki</th>
+                    <th>Autor</th>
+                    <th>Opis</th>
+                    <th>Recenzent</th>
+                    <th>Adres e-mail</th>
+                    <th>Data wydania</th>
+                    <th>Liczba stron</th>
+                </tr>
+            </table>
+
         </section>
     </main>
 
@@ -43,10 +143,10 @@
             <section>
                 <h4>Linki</h4>
                 <ul>
-                    <li><a href="glowna.html">Strona Główna</a></li>
-                    <li><a href="recenzja_hobbita.html">Hobbit</a></li>
-                    <li><a href="szkarlatna_wdowa.css">Szkarłatna Wdowa</a></li>
-                    <li><a href="subpage3.html">Podstrona 3</a></li>
+                    <li><a href="glowna.html" class="hvr-grow">Strona Główna</a></li>
+                    <li><a href="recenzja_hobbita.html" class="hvr-grow">Hobbit</a></li>
+                    <li><a href="szkarlatna_wdowa.css" class="hvr-grow">Szkarłatna Wdowa</a></li>
+                    <li><a href="subpage3.html" class="hvr-grow">Podstrona 3</a></li>
                 </ul>
             </section>
             <section>
@@ -60,4 +160,5 @@
         </div>
     </footer>
 </body>
+
 </html>
