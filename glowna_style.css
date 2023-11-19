@@ -17,10 +17,24 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
 }
-
+/*
 header {
     background-color: #333;
     color: #fff;
+    padding: 20px;
+}
+*/
+header:first-child /* pierwsze dziecko */
+{
+    background-color: #2c2c2c;
+    color: #fff;
+    padding: 20px;
+}
+
+header:first-child > h1 /* dziecko */
+{
+    /*background-color: #2c2c2c;*/
+    color: #1ec550;
     padding: 20px;
 }
 
@@ -37,7 +51,7 @@ main {
     padding: 20px;
 }
 
-section {
+section { /* po klasie */
     margin-bottom: 20px;
 }
 
@@ -45,7 +59,7 @@ article {
     background-color: #fff;
     padding: 20px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 15px;
     margin: 10px 0;
 }
 
@@ -136,3 +150,20 @@ a {
 .hvr-grow:active {
     transform: scale(1.1);
 }
+
+#tytul{ 
+    /*po id - tytul ksiazki*/
+    background-color: #363535;
+    color: #ddd;
+}
+
+
+textarea[id="opis"] {
+    /* po wartosci atrybutu */
+    background-color: yellow;
+  }
+
+/* id - ok
+klasa - ok
+
+*/
