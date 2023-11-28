@@ -34,7 +34,7 @@ header:first-child /* pierwsze dziecko */
 header:first-child > h1 /* dziecko */
 {
     /*background-color: #2c2c2c;*/
-    color: #1ec550;
+    color: hotpink;
     padding: 20px;
 }
 
@@ -153,14 +153,14 @@ a {
 
 #tytul{ 
     /*po id - tytul ksiazki*/
-    background-color: #363535;
-    color: #ddd;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0)000;
 }
 
 
 textarea[id="opis"] {
     /* po wartosci atrybutu */
-    background-color: yellow;
+    background-color: #ddd;
   }
 
 /* id - ok

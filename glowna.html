@@ -2,54 +2,350 @@
 <html lang="pl">
 
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="glowna_style.css">
     <title>Strona Domowa</title>
+
     <script>
-        function wyswietlDane() {
+        function validateImie(element) {
+            var fieldName = element.name;
+            if (fieldName != undefined) {
+
+                //console.log("filedName: ", fieldName);
+                var value = element.value.trim();
+                var errorId = "error" + fieldName.charAt(0).toUpperCase() + fieldName.slice(1);
+            }
+            else {
+                return false
+            }
+
+            //alert("errorID: " + errorId);
+            if (!/^[A-ZŁŚĆŻŹ][a-złśćżź]*$/.test(value)) {
+                element.classList.add("invalid");
+                document.getElementById("imie-error").innerHTML = "*";
+                return false;
+            } else {
+                element.classList.remove("invalid");
+                //console.log("clearing imie-error");
+                document.getElementById("imie-error").innerHTML = "";
+                return true;
+            }
+        }
+
+        function validateNazwisko(element) {
+            var fieldName = element.name;
+            var value = element.value.trim();
+            var errorId = "error" + fieldName.charAt(0).toUpperCase() + fieldName.slice(1);
+
+            if (!/^[A-ZŁŚĆŻŹ][a-złśćżź]*$/.test(value)) {
+                element.classList.add("invalid");
+                document.getElementById("nazwisko-error").innerHTML = "*";
+                return false;
+            } else {
+                element.classList.remove("invalid");
+                document.getElementById("nazwisko-error").innerHTML = "";
+                return true;
+            }
+        }
+
+        function validateEmail(element) {
+            var fieldName = element.name;
+            if (fieldName != undefined) {
+
+                //console.log("filedName: ", fieldName);
+                var value = element.value.trim();
+                var errorId = "error" + fieldName.charAt(0).toUpperCase() + fieldName.slice(1);
+            }
+            else {
+                return false
+            }
+            //var value = element.value.trim();
+            //var errorId = "error" + fieldName.charAt(0).toUpperCase() + fieldName.slice(1);
+            //console.log(value);
+            if (!value.includes('@')) {
+                element.classList.add("invalid");
+                document.getElementById("email-error").innerHTML = "*";
+                return false;
+            } else {
+                element.classList.remove("invalid");
+                document.getElementById("email-error").innerHTML = "";
+                return true;
+            }
+        }
+
+        function validatePassword(element) {
+            var fieldName = element.name;
+            if (fieldName != undefined) {
+                var value = element.value.trim();
+                var errorId = "error" + fieldName.charAt(0).toUpperCase() + fieldName.slice(1);
+            }
+            else {
+                return false;
+            }
+
+            if (value.length < 8 || !/\d/.test(value)) {
+                element.classList.add("invalid");
+                document.getElementById("haslo-error").innerHTML = "*";
+                return false;
+            } else {
+                element.classList.remove("invalid");
+                document.getElementById("haslo-error").innerHTML = "";
+                return true;
+            }
+        }
+
+        function validatePasswordMatch(element) {
+            var fieldName = element.name;
+            if (fieldName != undefined) {
+                var value = element.value.trim();
+                var errorId = "error" + fieldName.charAt(0).toUpperCase() + fieldName.slice(1);
+            }
+            else {
+                return false;
+            }
+            var passwordValue = document.getElementById("haslo").value.trim();
+
+            if (value !== passwordValue) {
+                element.classList.add("invalid");
+                document.getElementById("powtorz-haslo-error").innerHTML = "*";
+                return false;
+            } else {
+                element.classList.remove("invalid");
+                document.getElementById("powtorz-haslo-error").innerHTML = "";
+                return true;
+            }
+        }
+
+        function validateOpis(element) {
+            var fieldName = element.name;
+            var value = element.value.trim();
+            var errorId = "error" + fieldName.charAt(0).toUpperCase() + fieldName.slice(1);
+
+            if (value.length > 20) {
+                element.classList.add("invalid");
+                document.getElementById("opis-error").innerHTML = "*";
+                return false;
+            } else {
+                element.classList.remove("invalid");
+                document.getElementById("opis-error").innerHTML = "";
+                return true;
+            }
+        }
+
+        function validateAutor(element) {
+            var fieldName = element.name;
+            if (fieldName != undefined) {
+                var value = element.value.trim();
+                var errorId = "error" + fieldName.charAt(0).toUpperCase() + fieldName.slice(1);
+            }
+            else {
+                return false;
+            }
+
+            var errorId = "error" + fieldName.charAt(0).toUpperCase() + fieldName.slice(1);
+
+            if (/^[A-ZŁŚĆŻŹ][a-złśćżź]*\. [A-ZŁŚĆŻŹ][a-złśćżź]*$/.test(value)) {
+                element.classList.add("invalid");
+                document.getElementById("autor-error").innerHTML = "*";
+                return false;
+            } else {
+                element.classList.remove("invalid");
+                document.getElementById("autor-error").innerHTML = "";
+                return true;
+            }
+        }
+
+        function validateTytul(element) {
+            var fieldName = element.name;
+            var value = element.value.trim();
+            var errorId = "error" + fieldName.charAt(0).toUpperCase() + fieldName.slice(1);
+
+            if (!/^[A-ZŁŚĆŻŹ][a-złśćżź]*$/.test(value)) {
+                element.classList.add("invalid");
+                document.getElementById("tytul-error").innerHTML = "*";
+                return false;
+            } else {
+                element.classList.remove("invalid");
+                document.getElementById("tytul-error").innerHTML = "";
+                return true;
+            }
+        }
+
+        function validateForm() {
+            var imieValid = validateImie(document.getElementById("imie"));
+            var nazwiskoValid = validateNazwisko(document.getElementById("nazwisko"));
+            var emailValid = validateEmail(document.getElementById("email"));
+            var hasloValid = validatePassword(document.getElementById("haslo"));
+            var haslo2Valid = validatePasswordMatch(document.getElementById("powtorz-haslo"));
+            var opisValid = validateOpis(document.getElementById("opis"));
+            var autorValid = validateAutor(document.getElementById("autor"));
+            var tytulValid = validateTytul(document.getElementById("tytul"));
+            return imieValid && nazwiskoValid && emailValid && hasloValid && haslo2Valid && opisValid && autorValid && tytulValid;
+        }
+
+        // liczba wierszy z uwzględnieniem nagłówka
+
+        function dodajWiersz() {
+            if (validateForm() == false) {
+                var message = "";
+                var imie = document.getElementById("imie");
+                imie = imie.value.trim();
+                //console.log(imie);
+                if (validateImie(imie) == false) {
+                    //console.log("imie.length: ", imie.length);
+                    if (imie.length == 0) { message += "Pole \"Imię\" nie może być puste\n"; }
+                    if (/^[A-Z]/.test(imie) == false) { message += "Pole \"Imię\" musi zaczynać się od wielkiej litery\n"; }
+                }
+
+                var nazwisko = document.getElementById("nazwisko");
+                nazwisko = nazwisko.value.trim();
+                if (validateImie(nazwisko) == false) {
+                    if (nazwisko.length == 0) { message += "Pole \"Nazwisko\" nie może być puste\n"; }
+                    if (/^[A-Z]/.test(nazwisko) == false) { message += "Pole \"Nazwisko\" musi zaczynać się od wielkiej litery\n"; }
+                }
+
+                var mail = document.getElementById("email");
+                mail = mail.value.trim();
+                console.log("mail: ",mail);
+                if (validateEmail(document.getElementById("email")) == false) {
+                    if (mail.length == 0) { message += "Pole \"Adres e-mail\" nie może być puste\n"; }
+                    message += "Pole \"Adres e-mail\" musi zawierać znak @\n"
+                }
+
+                var haslo = document.getElementById("haslo");
+                haslo = haslo.value.trim();
+                if (validatePassword(document.getElementById("haslo")) == false) {
+                    if (haslo.length < 8) { message += "Hasło musi zawierać min. 8 znaków\n"; }
+                    if (/\d/.test(haslo) == false) {
+                        message += "Hasło musi zawierać min. 1 cyfrę\n";
+                    }
+                }
+
+                if (validatePasswordMatch(document.getElementById("powtorz-haslo")) == false) {
+                    message += "Podane hasła muszą być takie same\n"
+                }
+
+                if (validateOpis(document.getElementById("opis")) == false) {
+                    message += "Opis nie może być dłuższy niż 20 znaków\n";
+                }
+
+                var tytul = document.getElementById("tytul");
+                tytul = tytul.value.trim();
+                if (validateTytul(document.getElementById("tytul")) == false) {
+                    if (tytul.length == 0) { message += "Pole \"tytul\" nie może być puste\n"; }
+                    if (/^[A-Z]/.test(tytul) == false) { message += "Pole \"tytul\" musi zaczynać się od wielkiej litery\n"; }
+                }
+
+                var autor = document.getElementById("autor");
+                autor = autor.value.trim();
+                if (validateAutor(document.getElementById("autor")) == false) {
+                    if (autor.length == 0) { message += "Pole \"Autor\" nie może być puste\n"; }
+                    if (/^[A-Z]/.test(autor) == false) { message += "Pole \"Autor\" musi zaczynać się od wielkiej litery\n"; }
+                }
+
+                //console.log("Błąd walidacji");
+                event.preventDefault();
+                alert(message);
+                return false;
+            }
+            var tabela = document.getElementById("tabela-danych");
+            //console.log(tabela);
+            var liczbaWierszy = tabela.rows.length - 1;
+            //alert(liczbaWierszy+100);
             var tytul = document.getElementById("tytul").value;
             var autor = document.getElementById("autor").value;
             var opis = document.getElementById("opis").value;
-            var recenzent = document.getElementById("recenzent").value;
+            var recenzent = document.getElementById("imie").value + " " + document.getElementById("nazwisko").value;
             var email = document.getElementById("email").value;
-            var dataWydania = document.getElementById("data-wydania").value;
-            var liczbaStron = document.getElementById("liczba-stron").value;
+
+            var nowyWiersz = tabela.insertRow();
+            liczbaWierszy++;
+
+            var komorka0 = nowyWiersz.insertCell(0);
+            komorka0.innerHTML = tytul;
+            var komorka1 = nowyWiersz.insertCell(1);
+            komorka1.innerHTML = autor;
+            var komorka2 = nowyWiersz.insertCell(2);
+            komorka2.innerHTML = opis;
+            var komorka3 = nowyWiersz.insertCell(3);
+            komorka3.innerHTML = recenzent;
+            var komorka4 = nowyWiersz.insertCell(4);
+            komorka4.innerHTML = email;
+            var komorka5 = nowyWiersz.insertCell(5);
+            komorka5.innerHTML = "<button onclick='edytujWiersz(this)'>Edytuj</button>";
+            var komorka6 = nowyWiersz.insertCell(6);
+            komorka6.innerHTML = "<button onclick='usunWiersz(this)'>Usuń</button>";
+            var komorka7 = nowyWiersz.insertCell(7);
+            komorka7.innerHTML = "<button onclick='przesunWGore(this)'>W górę</button> <button onclick='przesunWDol(this)'>W dół</button>";
+
+
+            // Ustawienie koloru na biały lub szary (naprzemiennie)
+            nowyWiersz.style.backgroundColor = liczbaWierszy % 2 === 0 ? "#ffffff" : "#f0f0f0";
+        }
+
+        function przesunWGore(przycisk) {
+            var wiersz = przycisk.parentNode.parentNode;
+
+            if (wiersz.rowIndex > 1) {
+                var tabela = document.getElementById("tabela-danych");
+                tabela.rows[wiersz.rowIndex].parentNode.insertBefore(tabela.rows[wiersz.rowIndex], tabela.rows[wiersz.rowIndex - 1]);
+            }
+        }
+
+        function przesunWDol(przycisk) {
+            var wiersz = przycisk.parentNode.parentNode;
 
             var tabela = document.getElementById("tabela-danych");
 
-            var wiersz = tabela.insertRow();
-            var komorka1 = wiersz.insertCell(0);
-            var komorka2 = wiersz.insertCell(1);
-            var komorka3 = wiersz.insertCell(2);
-            var komorka4 = wiersz.insertCell(3);
-            var komorka5 = wiersz.insertCell(4);
-            var komorka6 = wiersz.insertCell(5);
-            var komorka7 = wiersz.insertCell(6);
-
-            komorka1.innerHTML = tytul;
-            komorka2.innerHTML = autor;
-            komorka3.innerHTML = opis;
-            komorka4.innerHTML = recenzent;
-            komorka5.innerHTML = email;
-            komorka6.innerHTML = dataWydania;
-            komorka7.innerHTML = liczbaStron;
-
-            document.getElementById("tytul").value = "";
-            document.getElementById("autor").value = "";
-            document.getElementById("opis").value = "";
-            document.getElementById("recenzent").value = "";
-            document.getElementById("email").value = "";
-            document.getElementById("data-wydania").value = "";
-            document.getElementById("liczba-stron").value = "";
+            if (wiersz.rowIndex < tabela.rows.length - 1) {
+                tabela.rows[wiersz.rowIndex].parentNode.insertBefore(tabela.rows[wiersz.rowIndex + 1], tabela.rows[wiersz.rowIndex]);
+            }
         }
+
+        function edytujWiersz(przycisk) {
+            var wiersz = przycisk.parentNode.parentNode;
+            var komorki = wiersz.getElementsByTagName("td");
+
+            // Przykład edycji - możesz dostosować do swoich potrzeb
+            var nowyTytul = prompt("Podaj nowy tytuł:", komorki[0].innerHTML);
+            var nowyAutor = prompt("Podaj nowego autora:", komorki[1].innerHTML);
+            var nowyOpis = prompt("Podaj nowy opis:", komorki[2].innerHTML);
+
+            komorki[0].innerHTML = nowyTytul;
+            komorki[1].innerHTML = nowyAutor;
+            komorki[2].innerHTML = nowyOpis;
+        }
+
+
+        function usunWiersz(przycisk) {
+            //alert("usuwanie");
+            var tabela = document.getElementById("tabela-danych");
+            var wiersz = przycisk.parentNode.parentNode;
+            tabela.deleteRow(wiersz.rowIndex);
+            liczbaWierszy--;
+
+            // Zaktualizuj kolory po usunięciu wiersza
+            for (var i = 1; i < tabela.rows.length; i++) {
+                tabela.rows[i].style.backgroundColor = i % 2 === 0 ? "#ffffff" : "#a8a8a8";
+            }
+        }
+
+        /*
+        document.getElementById("Dodaj").addEventListener("click", function () {
+            var tytul = document.getElementById("tytul").value;
+            var autor = document.getElementById("autor").value;
+            var opis = document.getElementById("opis").value;
+
+            dodajWiersz(tytul, autor, opis);
+        });*/
     </script>
 
 </head>
 
-<body >
+<body>
     <header>
         <h1>Moja Strona o książkach</h1>
         <h2>Witaj na mojej stronie internetowej</h2>
@@ -72,11 +368,12 @@
                     zabierze cię w niezwykłą podróż przez Śródziemie, gdzie spotkasz hobbita Bilbo Bagginsa, smoki,
                     krasnoludy i wiele innych fascynujących postaci. Przygotuj się na przygodę, która na zawsze
                     pozostanie w twoim sercu.</p>
-                <p>Chcesz dowiedzieć się więcej o tej niesamowitej książce? Przeczytaj pełną 
-                    <a href="recenzja_hobbita.html" class="hvr-grow">recenzję książki "Hobbit".</a></p>
+                <p>Chcesz dowiedzieć się więcej o tej niesamowitej książce? Przeczytaj pełną
+                    <a href="recenzja_hobbita.html" class="hvr-grow">recenzję książki "Hobbit".</a>
+                </p>
             </article>
 
-            <article class="animate__animated animate__zoomIn" >
+            <article class="animate__animated animate__zoomIn">
                 <h4>G.Masterton - "Szkarłatna Wdowa"</h4>
                 <p>Przenikliwa, mrożąca krew w żyłach opowieść o tajemniczej "Szkarłatnej Wdowie" autorstwa Grahama
                     Mastertona to lektura, która pozostawi cię z dreszczem na plecach. Przygotuj się na ekscytujący
@@ -97,45 +394,74 @@
             </article>
 
             <h2>Propozycje Książek do Zrecenzowania</h2>
+            <!--  onsubmit="validateForm()" -->
             <form>
-                <label for="tytul">Tytuł książki:</label>
-                <input type="text" id="tytul" required><br><br>
-        
-                <label for="autor">Autor książki:</label>
-                <input type="text" id="autor" required><br><br>
-        
-                <label for="opis">Krótki opis książki:</label><br>
-                <textarea id="opis" rows="4" cols="50" required></textarea><br><br>
-        
-                <label for="recenzent">Twój nick/imię (opcjonalne):</label>
-                <input type="text" id="recenzent"><br><br>
-        
+                <label for="imie">Imię:</label>
+                <input type="text" id="imie" required onblur="validateForm()">
+                <span class="error-star" id="imie-error"></span>
+                <br>
+
+                <label for="nazwisko">Nazwisko:</label>
+                <input type="text" id="nazwisko" required onblur="validateForm()">
+                <span class="error-star" id="nazwisko-error"></span>
+                <br>
+
                 <label for="email">Adres e-mail:</label>
-                <input type="email" id="email" required><br><br>
-        
-                <label for="data-wydania">Data wydania:</label>
-                <input type="date" id="data-wydania" required><br><br>
-        
-                <label for="liczba-stron">Liczba stron:</label>
-                <input type="number" id="liczba-stron" required><br><br>
-        
-                <input type="button" class="hvr-pulse-shrink" value="Wyślij propozycję" onclick="wyswietlDane()">
+                <input type="email" id="email" required onblur="validateForm()">
+                <span class="error-star" id="email-error"></span>
+                <br>
+
+                <label for="haslo">Hasło (min. 8 znaków, przynajmniej jedna cyfra):</label>
+                <input type="password" id="haslo" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" required
+                    onblur="validateForm()">
+                <span class="error-star" id="haslo-error"></span>
+                <br>
+
+                <label for="powtorz-haslo">Powtórz hasło:</label>
+                <input type="password" id="powtorz-haslo" required onblur="validateForm()">
+                <span class="error-star" id="powtorz-haslo-error"></span>
+                <br>
+
+                <label for="opis">Krótki opis (maks. 20 znaków):</label><br>
+                <textarea id="opis" rows="4" cols="50" required onblur="validateForm()"></textarea>
+                <span class="error-star" id="opis-error"></span>
+                <br>
+
+                <label for="tytul">Tytuł:</label>
+                <input type="text" id="tytul" required onblur="validateForm()">
+                <span class="error-star" id="tytul-error"></span>
+                <br>
+
+                <label for="autor">Autor:</label>
+                <input type="text" id="autor" required onblur="validateForm()">
+                <span class="error-star" id="autor-error"></span>
+                <br>
+
+                <input type="submit" id="Dodaj" class="hvr-pulse-shrink" value="Dodaj"
+                    onclick="event.preventDefault(); dodajWiersz()">
+
             </form>
-        
-            <h2>Wprowadzone dane:</h2>
-            <table id="tabela-danych">
-                <tr>
-                    <th>Tytuł książki</th>
-                    <th>Autor</th>
-                    <th>Opis</th>
-                    <th>Recenzent</th>
-                    <th>Adres e-mail</th>
-                    <th>Data wydania</th>
-                    <th>Liczba stron</th>
-                </tr>
-            </table>
+
+            <!-- Tabela z wprowadzonymi danymi -->
 
         </section>
+    </main>
+
+
+
+    <!--<div id="errorList" class="error-message"></div> -->
+    <h2>Wprowadzone dane:</h2>
+    <table id="tabela-danych">
+        <tr>
+            <th>Tytuł książki</th>
+            <th>Autor</th>
+            <th>Opis</th>
+            <th>Recenzent</th>
+            <th>Adres e-mail</th>
+        </tr>
+    </table>
+
+    </section>
     </main>
 
     <footer>
@@ -145,8 +471,8 @@
                 <ul>
                     <li><a href="glowna.html" class="hvr-grow">Strona Główna</a></li>
                     <li><a href="recenzja_hobbita.html" class="hvr-grow">Hobbit</a></li>
-                    <li><a href="szkarlatna_wdowa.css" class="hvr-grow">Szkarłatna Wdowa</a></li>
-                    <li><a href="subpage3.html" class="hvr-grow">Podstrona 3</a></li>
+                    <li><a href="szkarlatna_wdowa.html" class="hvr-grow">Szkarłatna Wdowa</a></li>
+                    <li><a href="wladca_pierscieni.html" class="hvr-grow">Władca pierścieni</a></li>
                 </ul>
             </section>
             <section>
